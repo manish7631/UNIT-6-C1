@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./counter.module.css";
 
-const Counter = ({ e }) => {
+const Counter = () => {
   // sample value to be replaced
   const [count, setCount] = useState(0)
   // NOTE: do not delete `data-cy` key value pair
@@ -10,8 +10,14 @@ const Counter = ({ e }) => {
       <button data-cy="task-counter-increment-button" onClick={() => {
         setCount(count + 1)
       }}>+</button>
-      <span data-cy="task-counter-value">{e.count}</span>
-      <button data-cy="task-counter-decrement-button">-</button>
+      <span data-cy="task-counter-value">{count}</span>
+      <button data-cy="task-counter-decrement-button" onClick={() => {
+        if (count <= 0) {
+          return
+        } else {
+          setCount(count - 1)
+        }
+      }}>-</button>
     </div>
   );
 };
